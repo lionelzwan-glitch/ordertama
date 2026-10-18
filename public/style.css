@@ -33,3 +33,36 @@ footer{border-top:1px solid #ffffff15;padding:26px 0 18px}.footbrand{display:fle
 .loader{position:fixed;z-index:99;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:17px;background:#080b14;color:#fff;transition:opacity .35s,visibility .35s}.loader.done{opacity:0;visibility:hidden;pointer-events:none}.loader-logo{width:100px;height:100px;object-fit:contain;border-radius:17px}.loader p{font-size:12px;color:#9aa6bd}.loadbar{height:3px;width:150px;background:#202a40;border-radius:9px;overflow:hidden}.loadbar i{display:block;height:100%;width:40%;background:linear-gradient(90deg,var(--a),var(--b));animation:loading 1s ease-in-out infinite alternate}@keyframes loading{to{transform:translateX(150%)}}
 @media(max-width:800px){.hero{grid-template-columns:1fr;padding-top:48px}.heroart{height:260px;grid-row:2}.herofoot{margin-top:20px}.products{grid-template-columns:repeat(2,minmax(0,1fr))}.product-art{height:165px}.product-body{padding:14px}.product-bottom{align-items:start;flex-direction:column}.actions{width:100%}.actions button{flex:1}.product-desc{min-height:0}.sectionhead{align-items:flex-start}.f1{right:5%}.f2{left:4%}}
 @media(max-width:540px){.shell{width:calc(100% - 28px)}.nav{height:74px}.logo{width:40px;height:40px}.brand{gap:8px}.brand b{font-size:15px}.brand small{font-size:7px;letter-spacing:1.3px}.navbuttons{gap:6px}.navbuttons .btn{padding:10px;font-size:10px}.hero{padding-top:42px}h1{font-size:42px;letter-spacing:-1.8px}.heroart{height:230px}.cube{width:125px;height:125px;font-size:70px;border-radius:32px}.orbit{width:210px;height:210px}.orbit.two{width:270px;height:270px}.float{padding:9px;font-size:15px}.f1{top:20px}.f2{bottom:20px}.herofoot{font-size:7px;letter-spacing:.8px}.catalog{padding-top:48px}.products{grid-template-columns:1fr;gap:14px}.product-art{height:200px}.product-bottom{flex-direction:row;align-items:flex-end}.product-body{padding:17px}.product-desc{min-height:0}.supportgrid{grid-template-columns:1fr}.sectionhead h2{font-size:30px}.footbottom{font-size:8px;letter-spacing:.2px}.footbottom span:last-child{max-width:48%;text-align:right}.dialog{padding:21px}.themegrid{grid-template-columns:repeat(3,1fr)}}
+
+/* TAMA ORDER - Horizontal Product Slider */
+#products {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  overflow-x: auto !important;
+  overflow-y: hidden;
+  gap: 18px;
+  padding: 8px 4px 20px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+#products > * {
+  flex: 0 0 280px;
+  min-width: 0;
+  scroll-snap-align: start;
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+  #products {
+    gap: 14px;
+    padding-bottom: 18px;
+  }
+
+  #products > * {
+    flex-basis: 78%;
+  }
+}
+
