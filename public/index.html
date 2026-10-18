@@ -79,4 +79,77 @@
   });
 })();
 </script>
+  
+<script>
+(() => {
+  const btn = document.getElementById("musicToggle");
+  if (!btn) return;
+
+  let dragging = false;
+  let moved = false;
+  let startX = 0, startY = 0;
+  let offsetX = 0, offsetY = 0;
+
+  btn.style.touchAction = "none";
+  btn.style.userSelect = "none";
+  btn.style.cursor = "grab";
+
+  btn.addEventListener("pointerdown", e => {
+    dragging = true;
+    moved = false;
+    startX = e.clientX;
+    startY = e.clientY;
+
+    const rect = btn.getBoundingClientRect();
+    offsetX = e.clientX - rect.left;
+    offsetY = e.clientY - rect.top;
+
+    btn.setPointerCapture(e.pointerId);
+    btn.style.cursor = "grabbing";
+  });
+
+  btn.addEventListener("pointermove", e => {
+    if (!dragging) return;
+
+    const dx = e.clientX - startX;
+    const dy = e.clientY - startY;
+
+    if (Math.abs(dx) > 5 || Math.abs(dy) > 5) moved = true;
+    if (!moved) return;
+
+    const x = Math.max(0, Math.min(
+      window.innerWidth - btn.offsetWidth,
+      e.clientX - offsetX
+    ));
+    const y = Math.max(0, Math.min(
+      window.innerHeight - btn.offsetHeight,
+      e.clientY - offsetY
+    ));
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+    btn.style.right = "auto";
+    btn.style.bottom = "auto";
+  });
+
+  btn.addEventListener("pointerup", e => {
+    dragging = false;
+    btn.style.cursor = "grab";
+
+    if (moved) {
+      // Mencegah klik play/pause setelah tombol digeser.
+      btn.addEventListener("click", ev => {
+        ev.stopImmediatePropagation();
+        ev.preventDefault();
+      }, { once: true, capture: true });
+    }
+  });
+
+  btn.addEventListener("pointercancel", () => {
+    dragging = false;
+    btn.style.cursor = "grab";
+  });
+})();
+      </script>
+  
 </body></html>
