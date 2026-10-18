@@ -31,5 +31,52 @@
 </main>
 <div id="themeBackdrop" class="overlay" hidden><section class="dialog"><button class="x" data-dismiss="themeBackdrop">×</button><div class="eyebrow">PERSONALISASI</div><h2>Pilih tema warna</h2><p>Sesuaikan tampilan dengan selera kamu.</p><div id="themeChoices" class="themegrid"></div></section></div>
 <div id="modal" class="overlay" hidden><section class="dialog"><button id="close" class="x">×</button><div class="eyebrow">TAMA ORDER</div><h2 id="modalTitle">Detail</h2><div id="modalBody"></div></section></div>
+
+<audio id="tamaMusic" src="/backsound.mp3" loop preload="auto"></audio>
+
+<button id="musicToggle" type="button"
+  style="position:fixed;right:18px;bottom:18px;z-index:100;
+  border:1px solid #16d7f4;border-radius:999px;padding:12px 16px;
+  background:#101625;color:#fff;font-weight:700;cursor:pointer;">
+  ▶ Putar Musik
+</button>
+
 <script src="app.js"></script>
+<script>
+(() => {
+  const music = document.getElementById("tamaMusic");
+  const button = document.getElementById("musicToggle");
+  if (!music || !button) return;
+
+  music.volume = 0.25;
+
+  function updateButton() {
+    button.textContent = music.paused
+      ? "▶ Putar Musik"
+      : "Ⅱ Matikan Musik";
+  }
+
+  button.addEventListener("click", async () => {
+    if (!music.paused) {
+      music.pause();
+      updateButton();
+      return;
+    }
+
+    try {
+      await music.play();
+      updateButton();
+    } catch (e) {
+      button.textContent = "↻ Coba Putar Lagi";
+    }
+  });
+
+  music.addEventListener("play", updateButton);
+  music.addEventListener("pause", updateButton);
+
+  music.play().then(updateButton).catch(() => {
+    button.textContent = "▶ Putar Musik";
+  });
+})();
+</script>
 </body></html>
