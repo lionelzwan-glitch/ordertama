@@ -1,6 +1,12 @@
 /* TAMA ORDER — product photo, logo, theme, modal and checkout */
 "use strict";
-const CONFIG={whatsappNumber:"6285815721322",telegramUrl:"https://t.me/username_admin",testimonialUrl:"https://t.me/username_testimoni",qrisImage:"https://files.catbox.moe/50w487.jpg",storeName:"TAMA ORDER"};
+const CONFIG={
+  whatsappNumber:"6285815721322",
+  telegramUrl:"https://t.me/fvcktmz",
+  testimonialUrl:"https://t.me/informationtama",
+  qrisImage:"https://files.catbox.moe/50w487.jpg",
+  storeName:"TAMA ORDER"
+};
 const themes=[["dark","Dark","#7868ff,#16d7f4"],["light","Light","#2586ff,#05c8df"],["ocean","Ocean","#00b9d8,#00e5b4"],["purple","Purple","#a33dff,#f044c8"],["emerald","Emerald","#00c879,#9cf43d"],["sunset","Sunset","#ff713c,#ffc13d"],["rose","Rose","#ff4d91,#ff88bf"],["cyberpunk","Cyberpunk","#ff3ec9,#00e5ff"],["nord","Nord","#81a1c1,#88c0d0"],["dracula","Dracula","#bd93f9,#ff79c6"],["coffee","Coffee","#a96a3d,#e0ad64"],["candy","Candy","#ff68ba,#8bbcff"],["matrix","Matrix","#00e65b,#a6ff4d"]];
 const products=[
 {name:"APK BUGXRAT SYAM",desc:"Paket digital praktis untuk kebutuhan harian.",symbol:"T",tag:"STARTER",glow:"#7868ff55",pa:"#8c78ff",pb:"#4167e8",image:"/basic.jpg",plans:[["1 bulan",20000],["Permanen",40000]]},
